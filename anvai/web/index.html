@@ -151,6 +151,63 @@ footer { padding-block: 28px 36px; border-top: 1px solid var(--line); }
 footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); }
 footer .logo { height: 24px; }
 
+
+/* Etiqueta de contenido de ejemplo */
+.example { display: inline-block; margin-left: 10px; padding: 2px 8px; border-radius: 4px; border: 1px dashed var(--muted); color: var(--muted); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; vertical-align: middle; }
+
+/* Nav links */
+.nav-links { display: flex; gap: 22px; align-items: center; }
+.nav-links a:not(.btn) { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+.nav-links a:not(.btn):hover { color: var(--ink); }
+@media (max-width: 640px) { .nav-links a:not(.btn) { display: none; } }
+
+/* Clientes */
+.clients { padding-block: 36px; border-top: 1px solid var(--line); }
+.clients .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px; }
+.clients .top p { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.logos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+@media (min-width: 640px) { .logos { grid-template-columns: repeat(4, 1fr); } }
+.logos span { background: var(--surface); display: grid; place-items: center; min-height: 84px; padding: 12px; color: var(--muted); text-align: center; transition: color .2s; }
+.logos span:hover { color: var(--ink); }
+.lg1 { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: 1.4rem; }
+.lg2 { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; letter-spacing: 0.04em; }
+.lg3 { font-family: var(--font-body); font-weight: 600; font-size: 1.2rem; letter-spacing: 0.3em; }
+.lg4 { font-family: var(--font-mono); font-size: 1rem; letter-spacing: 0.05em; }
+.lg5 { font-family: Georgia, "Times New Roman", serif; font-size: 1.25rem; letter-spacing: 0.18em; text-transform: uppercase; }
+.lg6 { font-family: var(--font-body); font-weight: 600; font-size: 1.3rem; letter-spacing: -0.02em; }
+.lg7 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; text-transform: lowercase; }
+.lg8 { font-family: var(--font-mono); font-weight: 500; font-size: 0.95rem; letter-spacing: 0.25em; }
+
+/* Portafolio */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.filter { font: inherit; font-size: 0.88rem; font-weight: 500; cursor: pointer; padding: 8px 16px; border-radius: 999px; background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.filter:hover { color: var(--ink); border-color: var(--lavender); }
+.filter[aria-pressed="true"] { background: var(--violet); color: var(--on-violet); border-color: var(--violet); }
+.work { display: grid; gap: 20px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .work { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .work { grid-template-columns: repeat(3, 1fr); } }
+.project { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.project .art { position: relative; border-radius: 8px; overflow: hidden; aspect-ratio: 4 / 3; max-width: 100%; }
+.project .art svg { display: block; width: 100%; height: 100%; }
+.project .art .meta { position: absolute; left: 12px; bottom: 10px; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: rgba(244,241,255,.75); }
+.project .info { display: grid; gap: 4px; }
+.project .cat { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--lavender); }
+.project h3 { font-size: 1.2rem; font-weight: 700; }
+.project .client { color: var(--muted); font-size: 0.92rem; }
+.project .result { margin-top: 6px; display: inline-flex; align-items: baseline; gap: 8px; font-size: 0.92rem; color: var(--muted); }
+.project .result b { font-family: var(--font-display); font-size: 1.25rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* Testimonios */
+.quotes { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .quotes { grid-template-columns: repeat(3, 1fr); } }
+.quote { margin: 0; background: var(--raised); border: 1px solid var(--line); border-radius: 8px; padding: 28px 24px; display: grid; gap: 20px; align-content: space-between; min-width: 0; }
+.quote blockquote { margin: 0; font-size: 1.05rem; line-height: 1.55; }
+.quote blockquote::before { content: "“"; display: block; font-family: var(--font-display); font-size: 3rem; line-height: .6; color: var(--violet); margin-bottom: 10px; }
+.quote figcaption { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: #F4F1FF; flex: none; }
+.quote .who { display: grid; font-size: 0.88rem; color: var(--muted); }
+.quote .who b { color: var(--ink); font-weight: 600; }
+
 @media (prefers-reduced-motion: reduce) {
   .scan { display: none; }
   .status .live::before { animation: none; }
@@ -171,7 +228,12 @@ footer .logo { height: 24px; }
 <nav>
   <div class="wrap">
     <svg class="logo" viewBox="-12 -52 424 164" role="img" aria-label="ANVAI"><use href="#anvai" x="-12" y="-52" width="424" height="164"/></svg>
-    <a class="btn btn-primary btn-sm" href="#contacto">Hablemos</a>
+    <div class="nav-links">
+      <a href="#servicios">Servicios</a>
+      <a href="#portafolio">Portafolio</a>
+      <a href="#clientes">Clientes</a>
+      <a class="btn btn-primary btn-sm" href="#contacto">Hablemos</a>
+    </div>
   </div>
 </nav>
 
@@ -190,6 +252,22 @@ footer .logo { height: 24px; }
     </div>
   </div>
 </header>
+
+<div class="clients" id="clientes">
+  <div class="wrap">
+    <div class="top"><p>Marcas que ya trabajan con nosotros</p><span class="example">CLIENTES FICTICIOS · EJEMPLO</span></div>
+    <div class="logos" aria-label="Logos de clientes de ejemplo">
+      <span class="lg1">Lúmina Café</span>
+      <span class="lg2">KIRO</span>
+      <span class="lg3">SOLENNE</span>
+      <span class="lg4">norte/dental</span>
+      <span class="lg5">Vértice</span>
+      <span class="lg6">Nodo Finanzas</span>
+      <span class="lg7">brisa hotel</span>
+      <span class="lg8">ATLAS</span>
+    </div>
+  </div>
+</div>
 
 <section id="servicios">
   <div class="wrap">
@@ -217,6 +295,78 @@ footer .logo { height: 24px; }
   </div>
 </section>
 
+<section id="portafolio">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Portafolio <span class="example">PROYECTOS FICTICIOS · EJEMPLO</span></span>
+      <h2>Proyectos que llevan empresas al futuro.</h2>
+      <p>Una muestra de cómo combinamos estrategia, publicidad y fotografía con IA.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar proyectos">
+      <button class="filter" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+      <button class="filter" type="button" data-filter="estrategia" aria-pressed="false">Estrategia de IA</button>
+      <button class="filter" type="button" data-filter="publicidad" aria-pressed="false">Publicidad y marketing</button>
+      <button class="filter" type="button" data-filter="fotografia" aria-pressed="false">Fotografía</button>
+    </div>
+    <div class="work" id="work">
+      <article class="project" data-cat="fotografia">
+        <div class="art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#2E2070"/><circle cx="250" cy="150" r="96" fill="#0F0F1A"/><circle cx="250" cy="150" r="70" fill="#5A3A1E"/><circle cx="250" cy="150" r="70" fill="none" stroke="#F5C26B" stroke-width="3"/><path d="M226 138 q24 -22 48 0 q-24 22 -48 0z" fill="#F5E6CC" opacity=".85"/><rect x="58" y="60" width="90" height="12" rx="4" fill="#B9A6FF"/><rect x="58" y="84" width="60" height="8" rx="4" fill="#8D6BFF"/></svg><span class="meta">f/2.8 · 1/125 · ISO 200</span></div>
+        <div class="info">
+          <span class="cat">Fotografía con IA</span>
+          <h3>Menú visual de temporada</h3>
+          <span class="client">Lúmina Café</span>
+          <span class="result"><b>+38 %</b> ventas de bebidas de temporada</span>
+        </div>
+      </article>
+      <article class="project" data-cat="estrategia">
+        <div class="art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#0F0F1A"/><rect x="60" y="54" width="190" height="52" rx="14" fill="#2E2070"/><rect x="78" y="74" width="130" height="10" rx="5" fill="#B9A6FF"/><rect x="150" y="124" width="190" height="52" rx="14" fill="#8D6BFF"/><rect x="168" y="144" width="110" height="10" rx="5" fill="#0F0F1A"/><rect x="60" y="194" width="150" height="52" rx="14" fill="#2E2070"/><rect x="78" y="214" width="90" height="10" rx="5" fill="#B9A6FF"/><circle cx="330" cy="70" r="8" fill="#F5C26B"/></svg><span class="meta">PROYECTO 002</span></div>
+        <div class="info">
+          <span class="cat">Estrategia de IA</span>
+          <h3>Asistente de citas con IA</h3>
+          <span class="client">Norte Dental</span>
+          <span class="result"><b>−45 %</b> llamadas perdidas</span>
+        </div>
+      </article>
+      <article class="project" data-cat="publicidad">
+        <div class="art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#8D6BFF"/><g opacity=".25" stroke="#0F0F1A" stroke-width="18"><line x1="-20" y1="300" x2="200" y2="0"/><line x1="60" y1="300" x2="280" y2="0"/><line x1="140" y1="300" x2="360" y2="0"/></g><rect x="236" y="40" width="110" height="220" rx="4" fill="#0F0F1A"/><circle cx="291" cy="96" r="26" fill="#B9A6FF"/><rect x="262" y="132" width="58" height="96" rx="6" fill="#B9A6FF"/><text x="28" y="62" font-family="Syne, sans-serif" font-weight="800" font-size="30" fill="#0F0F1A">MUÉVETE</text></svg><span class="meta">PROYECTO 003</span></div>
+        <div class="info">
+          <span class="cat">Publicidad</span>
+          <h3>Campaña “Hecho para moverte”</h3>
+          <span class="client">Kiro Moda</span>
+          <span class="result"><b>3,1×</b> retorno de la inversión publicitaria</span>
+        </div>
+      </article>
+      <article class="project" data-cat="fotografia">
+        <div class="art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#ECE6FF"/><ellipse cx="200" cy="262" rx="150" ry="14" fill="#B9A6FF" opacity=".6"/><rect x="108" y="96" width="62" height="160" rx="10" fill="#2E2070"/><rect x="124" y="70" width="30" height="30" rx="4" fill="#F5C26B"/><rect x="190" y="130" width="70" height="126" rx="35" fill="#6C3BFF"/><rect x="280" y="160" width="48" height="96" rx="8" fill="#0F0F1A"/><rect x="290" y="146" width="28" height="16" rx="3" fill="#B9A6FF"/></svg><span class="meta">f/8 · 1/160 · ISO 100</span></div>
+        <div class="info">
+          <span class="cat">Fotografía de producto</span>
+          <h3>Catálogo generado con IA</h3>
+          <span class="client">Solenne Cosmética</span>
+          <span class="result"><b>120</b> fotos de catálogo en 5 días</span>
+        </div>
+      </article>
+      <article class="project" data-cat="publicidad">
+        <div class="art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#0F0F1A"/><circle cx="310" cy="80" r="34" fill="#F5C26B" opacity=".9"/><rect x="50" y="120" width="70" height="160" fill="#2E2070"/><rect x="130" y="70" width="90" height="210" fill="#8D6BFF"/><rect x="230" y="150" width="60" height="130" fill="#2E2070"/><rect x="300" y="190" width="60" height="90" fill="#B9A6FF"/><g fill="#0F0F1A" opacity=".55"><rect x="146" y="92" width="16" height="16"/><rect x="186" y="92" width="16" height="16"/><rect x="146" y="128" width="16" height="16"/><rect x="186" y="128" width="16" height="16"/><rect x="146" y="164" width="16" height="16"/><rect x="186" y="164" width="16" height="16"/></g></svg><span class="meta">PROYECTO 005</span></div>
+        <div class="info">
+          <span class="cat">Marketing digital</span>
+          <h3>Anuncios y recorridos virtuales</h3>
+          <span class="client">Vértice Inmobiliaria</span>
+          <span class="result"><b>+62 %</b> solicitudes de visita</span>
+        </div>
+      </article>
+      <article class="project" data-cat="estrategia">
+        <div class="art"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="300" fill="#2E2070"/><g stroke="#B9A6FF" stroke-width="2" opacity=".7"><line x1="80" y1="210" x2="160" y2="120"/><line x1="160" y1="120" x2="250" y2="170"/><line x1="250" y1="170" x2="330" y2="80"/><line x1="160" y1="120" x2="200" y2="60"/><line x1="250" y1="170" x2="290" y2="240"/></g><circle cx="80" cy="210" r="12" fill="#8D6BFF"/><circle cx="160" cy="120" r="16" fill="#F4F1FF"/><circle cx="250" cy="170" r="14" fill="#8D6BFF"/><circle cx="330" cy="80" r="18" fill="#F5C26B"/><circle cx="200" cy="60" r="9" fill="#B9A6FF"/><circle cx="290" cy="240" r="10" fill="#B9A6FF"/></svg><span class="meta">PROYECTO 006</span></div>
+        <div class="info">
+          <span class="cat">Transformación con IA</span>
+          <h3>Hoja de ruta de IA 2027</h3>
+          <span class="client">Nodo Finanzas</span>
+          <span class="result"><b>12</b> procesos automatizados</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
 <section id="proceso">
   <div class="wrap">
     <div class="head">
@@ -227,6 +377,29 @@ footer .logo { height: 24px; }
       <div class="step"><span class="num">PASO 1</span><h3>Analizamos</h3><p>Vemos dónde está tu negocio hoy y qué oportunidades te abre la IA.</p></div>
       <div class="step"><span class="num">PASO 2</span><h3>Transformamos</h3><p>Ponemos en marcha la estrategia, las campañas y el contenido.</p></div>
       <div class="step"><span class="num">PASO 3</span><h3>Hacemos crecer</h3><p>Medimos cada resultado y ajustamos para que sigas avanzando.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Lo que dicen <span class="example">TESTIMONIOS FICTICIOS · EJEMPLO</span></span>
+      <h2>Empresas que ya dieron el salto.</h2>
+    </div>
+    <div class="quotes">
+      <figure class="quote">
+        <blockquote>En tres semanas teníamos un menú nuevo, fotos increíbles y una campaña lista. Nunca habíamos vendido tanto en temporada.</blockquote>
+        <figcaption><span class="avatar" style="background:#2E2070">LM</span><span class="who"><b>Laura Méndez</b>Fundadora, Lúmina Café</span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>No sabíamos por dónde empezar con la IA. ANVAI nos dio un plan claro y hoy automatizamos procesos que antes nos tomaban días.</blockquote>
+        <figcaption><span class="avatar" style="background:#6C3BFF">DR</span><span class="who"><b>Diego Ramírez</b>Director de operaciones, Nodo Finanzas</span></figcaption>
+      </figure>
+      <figure class="quote">
+        <blockquote>El catálogo quedó listo en cinco días y con un estilo que por fin se siente nuestro. Rápidos, creativos y muy cercanos.</blockquote>
+        <figcaption><span class="avatar" style="background:#8A6220">SC</span><span class="who"><b>Sofía Castro</b>Gerente de marca, Solenne Cosmética</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -273,6 +446,18 @@ footer .logo { height: 24px; }
         setTimeout(function () { btn.textContent = 'Copiar correo'; }, 2000);
       }, selectIt);
     } catch (e) { selectIt(); }
+  });
+})();
+
+(function () {
+  var buttons = document.querySelectorAll('.filter');
+  var cards = document.querySelectorAll('#work .project');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      buttons.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      cards.forEach(function (c) { c.hidden = !(f === 'todos' || c.getAttribute('data-cat') === f); });
+    });
   });
 })();
 </script>
