@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Agugu</title>
+  <meta name="description" content="Álbum de bebé: fotos, momentos e hitos.">
+  <meta name="theme-color" content="#f7efe8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Agugu">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 id="title">Agugu</h1>
+    <p id="subtitle" class="muted"></p>
+  </header>
+
+  <main id="view" tabindex="-1"></main>
+
+  <nav class="tabbar" aria-label="Navegación">
+    <a href="#/" data-tab="album"><span aria-hidden="true">📖</span>Álbum</a>
+    <a href="#/hitos" data-tab="hitos"><span aria-hidden="true">⭐</span>Hitos</a>
+    <a href="#/nuevo" data-tab="nuevo" class="add" aria-label="Nuevo momento"><span aria-hidden="true">＋</span></a>
+    <a href="#/crecimiento" data-tab="crecimiento"><span aria-hidden="true">📏</span>Crecer</a>
+    <a href="#/perfil" data-tab="perfil"><span aria-hidden="true">👶</span>Perfil</a>
+  </nav>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
