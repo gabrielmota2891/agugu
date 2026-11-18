@@ -1,0 +1,278 @@
+<title>ANVAI Agency</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una sola columna, oscura primero. Hero con rejilla fina y encuadre de cámara; tres bloques cortos y un cierre. */
+:root {
+  --surface: #0F0F1A;
+  --raised: #181829;
+  --line: #2C2A45;
+  --grid: rgba(185, 166, 255, 0.07);
+  --ink: #F4F1FF;
+  --muted: #A9A3C6;
+  --violet: #8D6BFF;
+  --on-violet: #0F0F1A;
+  --lavender: #B9A6FF;
+  --gold: #F5C26B;
+  --glow: rgba(141, 107, 255, 0.22);
+  --font-display: "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --surface: #F7F6FB; --raised: #FFFFFF; --line: #E2DDF2; --grid: rgba(108, 59, 255, 0.06);
+    --ink: #17142A; --muted: #5C5677; --violet: #6C3BFF; --on-violet: #FFFFFF;
+    --lavender: #6A52C9; --gold: #B9862F; --glow: rgba(108, 59, 255, 0.12); color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --surface: #F7F6FB; --raised: #FFFFFF; --line: #E2DDF2; --grid: rgba(108, 59, 255, 0.06);
+  --ink: #17142A; --muted: #5C5677; --violet: #6C3BFF; --on-violet: #FFFFFF;
+  --lavender: #6A52C9; --gold: #B9862F; --glow: rgba(108, 59, 255, 0.12); color-scheme: light;
+}
+
+body { background: var(--surface); color: var(--ink); font-family: var(--font-body); font-size: 1rem; line-height: 1.6; }
+.wrap {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.05; }
+p { margin: 0; }
+.label { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--lavender); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 4px; }
+
+/* Logo */
+.logo { display: block; height: 36px; width: auto; }
+.logo .ink { fill: var(--ink); }
+.logo .ai { fill: var(--violet); }
+.logo .spark { fill: var(--gold); }
+
+/* Nav */
+nav { padding-block: 22px; border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.btn {
+  display: inline-block; font-family: var(--font-body); font-weight: 600; font-size: 0.95rem;
+  padding: 12px 22px; border-radius: 999px; text-decoration: none; white-space: nowrap;
+}
+.btn-primary { background: var(--violet); color: var(--on-violet); }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn-ghost { border: 1px solid var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--lavender); }
+.btn-sm { padding: 9px 18px; font-size: 0.88rem; }
+
+/* Hero */
+.hero {
+  position: relative; overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 55% at 70% 40%, var(--glow), transparent 70%),
+    linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 48px 48px,
+    var(--surface);
+}
+.hero .wrap { padding-block: clamp(64px, 11vw, 128px) clamp(56px, 9vw, 104px); }
+.frame { position: relative; padding: clamp(24px, 4vw, 48px); }
+.corner { position: absolute; width: 26px; height: 26px; border: 0 solid var(--ink); opacity: 0.55; }
+.tl { top: 0; left: 0; border-width: 2px 0 0 2px; } .tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+.bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; } .br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+.status {
+  display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--font-mono);
+  font-size: 0.75rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase;
+}
+.status .live { color: var(--lavender); display: inline-flex; align-items: center; gap: 8px; }
+.status .live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); animation: blink 2.4s ease-in-out infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.hero h1 {
+  margin-top: 28px; font-weight: 800; letter-spacing: -0.01em;
+  font-size: clamp(2.5rem, 7.6vw, 5.4rem); max-width: 13ch;
+}
+.hero h1 em { font-style: normal; color: var(--violet); }
+.hero .lead { margin-top: 24px; max-width: 52ch; font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--muted); }
+.ctas { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+.scan {
+  position: absolute; left: 0; right: 0; height: 1px; top: 0;
+  background: linear-gradient(90deg, transparent, var(--violet), transparent);
+  opacity: 0.5; animation: scan 7s linear infinite;
+}
+@keyframes scan { from { top: 0; } to { top: 100%; } }
+
+/* Secciones */
+section { padding-block: clamp(64px, 9vw, 104px); border-top: 1px solid var(--line); }
+.head { display: grid; gap: 14px; max-width: 640px; margin-bottom: 44px; }
+.head h2 { font-size: clamp(1.9rem, 4.6vw, 3rem); font-weight: 800; }
+.head p { color: var(--muted); font-size: 1.08rem; }
+
+/* Servicios */
+.services { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .services { grid-template-columns: repeat(3, 1fr); } }
+.service {
+  background: var(--raised); border: 1px solid var(--line); border-radius: 8px;
+  padding: 28px 24px; display: grid; gap: 12px; align-content: start; min-width: 0;
+  transition: border-color .2s;
+}
+.service:hover { border-color: var(--violet); }
+.service .code { font-family: var(--font-mono); font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; }
+.service h3 { font-size: 1.35rem; font-weight: 700; }
+.service p { color: var(--muted); font-size: 0.97rem; }
+
+/* Proceso */
+.steps { display: grid; gap: 28px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.step { display: grid; gap: 10px; align-content: start; padding-top: 20px; border-top: 2px solid var(--violet); min-width: 0; }
+.step .num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--violet); font-variant-numeric: tabular-nums; letter-spacing: 0.1em; }
+.step h3 { font-size: 1.25rem; font-weight: 700; }
+.step p { color: var(--muted); font-size: 0.97rem; }
+
+/* Cierre */
+.cta-block {
+  position: relative; border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+  padding: clamp(32px, 6vw, 64px) clamp(20px, 5vw, 56px);
+  background: radial-gradient(ellipse 70% 80% at 100% 100%, var(--glow), transparent 70%), var(--raised);
+  display: grid; gap: 28px; grid-template-columns: 1fr; align-items: end;
+}
+@media (min-width: 760px) { .cta-block { grid-template-columns: 1.4fr 1fr; } }
+.cta-block h2 { font-size: clamp(2rem, 5.4vw, 3.4rem); font-weight: 800; }
+.cta-block h2 em { font-style: normal; color: var(--violet); }
+.contact { display: grid; gap: 12px; min-width: 0; }
+.contact .value { font-size: 1.1rem; font-weight: 500; user-select: all; overflow-wrap: anywhere; }
+.contact .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.copy {
+  font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; background: transparent;
+  color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px;
+}
+.copy:hover { border-color: var(--lavender); }
+.note { font-size: 0.8rem; color: var(--muted); }
+
+footer { padding-block: 28px 36px; border-top: 1px solid var(--line); }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); }
+footer .logo { height: 24px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .scan { display: none; }
+  .status .live::before { animation: none; }
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="anvai" viewBox="-12 -52 424 164">
+    <polygon style="fill:var(--ink)" points="0,100 32,0 52,0 84,100 63,100 42,32 21,100"/>
+    <polygon style="fill:var(--ink)" points="98,100 98,0 118,0 150,62 150,0 170,0 170,100 150,100 118,38 118,100"/>
+    <polygon style="fill:var(--ink)" points="184,0 205,0 226,68 247,0 268,0 236,100 216,100"/>
+    <polygon style="fill:var(--violet)" points="282,100 314,0 334,0 366,100 345,100 324,32 303,100"/>
+    <polygon style="fill:var(--violet)" points="380,0 400,0 400,100 380,100"/>
+    <path style="fill:var(--gold)" d="M324 -40 C326.56 -26.56 326.56 -26.56 340 -24 C326.56 -21.44 326.56 -21.44 324 -8 C321.44 -21.44 321.44 -21.44 308 -24 C321.44 -26.56 321.44 -26.56 324 -40Z"/>
+  </symbol>
+</svg>
+
+<nav>
+  <div class="wrap">
+    <svg class="logo" viewBox="-12 -52 424 164" role="img" aria-label="ANVAI"><use href="#anvai" x="-12" y="-52" width="424" height="164"/></svg>
+    <a class="btn btn-primary btn-sm" href="#contacto">Hablemos</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="scan" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="frame">
+      <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+      <div class="status"><span class="live">Agencia de IA</span><span>Publicidad · Marketing · Fotografía</span></div>
+      <h1>Tu empresa, lista para el <em>futuro.</em></h1>
+      <p class="lead">La inteligencia artificial ya está cambiando cómo se vende, se comunica y se compite. En ANVAI adaptamos tu negocio a esa nueva era, con estrategia, publicidad y contenido hechos con IA.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#contacto">Empieza hoy</a>
+        <a class="btn btn-ghost" href="#servicios">Qué hacemos</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="servicios">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Qué hacemos</span>
+      <h2>Tres formas de llevar tu negocio al siguiente nivel.</h2>
+    </div>
+    <div class="services">
+      <article class="service">
+        <span class="code">01 / ESTRATEGIA</span>
+        <h3>Transformación con IA</h3>
+        <p>Analizamos tu empresa y te damos un plan claro para usar la IA donde más te ayuda a crecer.</p>
+      </article>
+      <article class="service">
+        <span class="code">02 / CRECIMIENTO</span>
+        <h3>Publicidad y marketing</h3>
+        <p>Campañas y redes sociales creadas y optimizadas con IA para llegar a más clientes y gastar mejor.</p>
+      </article>
+      <article class="service">
+        <span class="code">03 / IMAGEN</span>
+        <h3>Fotografía y contenido</h3>
+        <p>Fotos, videos y piezas visuales, reales y generadas con IA, para que tu marca se vea del futuro.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="head">
+      <span class="label">Cómo trabajamos</span>
+      <h2>Simple, rápido y medible.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="num">PASO 1</span><h3>Analizamos</h3><p>Vemos dónde está tu negocio hoy y qué oportunidades te abre la IA.</p></div>
+      <div class="step"><span class="num">PASO 2</span><h3>Transformamos</h3><p>Ponemos en marcha la estrategia, las campañas y el contenido.</p></div>
+      <div class="step"><span class="num">PASO 3</span><h3>Hacemos crecer</h3><p>Medimos cada resultado y ajustamos para que sigas avanzando.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="cta-block">
+      <div>
+        <span class="label">Contacto</span>
+        <h2 style="margin-top:14px">El futuro no espera. <em>Tu empresa tampoco.</em></h2>
+      </div>
+      <div class="contact">
+        <span class="value" id="email">hola@anvai.com</span>
+        <div class="row">
+          <button class="copy" id="copy-email" type="button">Copiar correo</button>
+          <span class="note">@anvaiagency</span>
+        </div>
+        <p class="note">Datos de ejemplo: cámbialos cuando tengas el dominio y las redes registradas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <svg class="logo" viewBox="-12 -52 424 164" role="img" aria-label="ANVAI"><use href="#anvai" x="-12" y="-52" width="424" height="164"/></svg>
+    <span>Creatividad humana, inteligencia artificial.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy-email');
+  var email = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(email);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Seleccionado';
+    }
+    try {
+      navigator.clipboard.writeText(email.textContent).then(function () {
+        btn.textContent = 'Correo copiado';
+        setTimeout(function () { btn.textContent = 'Copiar correo'; }, 2000);
+      }, selectIt);
+    } catch (e) { selectIt(); }
+  });
+})();
+</script>

@@ -1,0 +1,227 @@
+<title>ANVAI Muy Pronto</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Instrument+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: un escenario fijo de 1080 × 1920 (Reels, TikTok, Stories) escalado para caber en pantalla. Diseño de un solo tema, oscuro a propósito. */
+:root {
+  --night: #0F0F1A;
+  --ink: #F4F1FF;
+  --muted: #A9A3C6;
+  --violet: #8D6BFF;
+  --lavender: #B9A6FF;
+  --gold: #F5C26B;
+  --font-display: "Syne", "Avenir Next", "Segoe UI", sans-serif;
+  --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  background: #07070D; color: var(--ink); font-family: var(--font-body);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px; box-sizing: border-box; overflow: hidden;
+}
+.viewport { position: relative; flex: 1 1 auto; width: 100%; min-height: 0; display: grid; place-items: center; }
+.holder { position: relative; overflow: hidden; border-radius: 6px; box-shadow: 0 0 0 1px #2C2A45; }
+#stage {
+  position: absolute; top: 0; left: 0; width: 1080px; height: 1920px; transform-origin: 0 0;
+  background: var(--night); overflow: hidden;
+}
+.grid {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(185,166,255,.08) 1px, transparent 1px) 0 0 / 72px 72px,
+    linear-gradient(90deg, rgba(185,166,255,.08) 1px, transparent 1px) 0 0 / 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 47%, #000 30%, transparent 80%);
+          mask-image: radial-gradient(ellipse 70% 55% at 50% 47%, #000 30%, transparent 80%);
+}
+.glow { position: absolute; left: 50%; top: 880px; width: 1300px; height: 1000px; transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(141,107,255,.38), transparent 62%); }
+.scan { position: absolute; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--violet), transparent); }
+.corner { position: absolute; width: 70px; height: 70px; border: 0 solid var(--ink); }
+.c-tl { border-width: 5px 0 0 5px; } .c-tr { border-width: 5px 5px 0 0; }
+.c-bl { border-width: 0 0 5px 5px; } .c-br { border-width: 0 5px 5px 0; }
+.readout { position: absolute; font-family: var(--font-mono); font-size: 26px; letter-spacing: .12em; color: var(--muted); white-space: nowrap; }
+.readout .dot { color: var(--gold); }
+#logo { position: absolute; left: 140px; top: 735px; width: 800px; height: auto; overflow: visible; }
+.flash { position: absolute; width: 360px; height: 360px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,194,107,.75), rgba(245,194,107,0) 65%); transform: translate(-50%, -50%); }
+.agency { position: absolute; left: 0; right: 0; top: 1080px; text-align: center; font-weight: 500; font-size: 34px; color: var(--muted); }
+.soon { position: absolute; left: 0; right: 0; top: 1290px; text-align: center; font-family: var(--font-display); font-weight: 800; font-size: 112px; line-height: 1.02; letter-spacing: -.01em; }
+.soon .s2 { color: var(--violet); }
+.line { position: absolute; left: 50%; top: 1545px; height: 3px; background: var(--gold); transform: translateX(-50%); }
+.tag { position: absolute; left: 0; right: 0; top: 1585px; text-align: center; font-size: 42px; color: var(--ink); }
+.handle { position: absolute; left: 0; right: 0; bottom: 120px; text-align: center; font-family: var(--font-mono); font-size: 30px; letter-spacing: .14em; color: var(--lavender); }
+
+.controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+button {
+  font: 600 14px var(--font-body); color: #0F0F1A; background: var(--violet); border: 0; border-radius: 999px;
+  padding: 10px 20px; cursor: pointer;
+}
+button.ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px #2C2A45; }
+button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.hint { font-size: 13px; color: var(--muted); }
+</style>
+
+<div class="viewport" id="viewport">
+  <div class="holder" id="holder">
+    <div id="stage" aria-label="Animación: logo de ANVAI con el mensaje Muy pronto">
+      <div class="grid" id="grid"></div>
+      <div class="glow" id="glow"></div>
+      <div class="scan" id="scan"></div>
+
+      <span class="corner c-tl" id="ctl"></span><span class="corner c-tr" id="ctr"></span>
+      <span class="corner c-bl" id="cbl"></span><span class="corner c-br" id="cbr"></span>
+      <div class="readout" id="rtop"><span class="dot">●</span> <span id="rtopText">AF-S · ENFOCANDO</span></div>
+      <div class="readout" id="rbot">f/1.8 · 1/250 · ISO 100</div>
+
+      <div class="flash" id="flash"></div>
+      <svg id="logo" viewBox="-12 -52 424 164" aria-hidden="true">
+        <polygon class="L" fill="#F4F1FF" points="0,100 32,0 52,0 84,100 63,100 42,32 21,100"/>
+        <polygon class="L" fill="#F4F1FF" points="98,100 98,0 118,0 150,62 150,0 170,0 170,100 150,100 118,38 118,100"/>
+        <polygon class="L" fill="#F4F1FF" points="184,0 205,0 226,68 247,0 268,0 236,100 216,100"/>
+        <polygon class="L" fill="#8D6BFF" points="282,100 314,0 334,0 366,100 345,100 324,32 303,100"/>
+        <polygon class="L" fill="#8D6BFF" points="380,0 400,0 400,100 380,100"/>
+        <g id="sparkG"><path fill="#F5C26B" d="M324 -40 C326.56 -26.56 326.56 -26.56 340 -24 C326.56 -21.44 326.56 -21.44 324 -8 C321.44 -21.44 321.44 -21.44 308 -24 C321.44 -26.56 321.44 -26.56 324 -40Z"/></g>
+      </svg>
+      <div class="agency" id="agency">AGENCY</div>
+
+      <div class="soon" id="soon"><span id="s1">MUY</span><br><span class="s2" id="s2">PRONTO</span></div>
+      <div class="line" id="line"></div>
+      <div class="tag" id="tag">El futuro de tu empresa empieza aquí.</div>
+      <div class="handle" id="handle">@anvaiagency</div>
+    </div>
+  </div>
+</div>
+<div class="controls">
+  <button id="replay" type="button">Repetir</button>
+  <button id="pause" class="ghost" type="button">Pausar</button>
+  <span class="hint">1080 × 1920 · 9 s</span>
+</div>
+
+<script>
+(function () {
+  var W = 1080, H = 1920, DURATION = 9;
+  var $ = function (id) { return document.getElementById(id); };
+  var clamp = function (x) { return x < 0 ? 0 : x > 1 ? 1 : x; };
+  var p = function (t, a, b) { return clamp((t - a) / (b - a)); };
+  var easeOut = function (x) { return 1 - Math.pow(1 - x, 3); };
+  var easeInOut = function (x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+  var backOut = function (x) { var c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(x - 1, 3) + c1 * Math.pow(x - 1, 2); };
+  var lerp = function (a, b, x) { return a + (b - a) * x; };
+  var letters = Array.prototype.slice.call(document.querySelectorAll('#logo .L'));
+
+  // Encuadre: de los bordes del formato hasta rodear el logo
+  var far = { x1: 60, y1: 60, x2: W - 60, y2: H - 60 };
+  var near = { x1: 100, y1: 560, x2: W - 100, y2: 1200 };
+
+  function renderAt(t) {
+    // 0–1 s: aparece la rejilla
+    var gIn = easeOut(p(t, 0, 1.2));
+    $('grid').style.opacity = gIn;
+    $('glow').style.opacity = 0.25 + 0.75 * easeOut(p(t, 2.4, 4.2)) - 0.15 * Math.sin(t * 1.4) * p(t, 4.2, 5);
+    // línea de escaneo: dos pasadas
+    var sc = (t % 3.2) / 3.2;
+    $('scan').style.top = (sc * H) + 'px';
+    $('scan').style.opacity = 0.7 * p(t, 0.2, 0.8);
+
+    // 0.4–2.4 s: el encuadre se cierra
+    var c = easeInOut(p(t, 0.5, 2.3));
+    var cIn = easeOut(p(t, 0.3, 0.8));
+    var b = { x1: lerp(far.x1, near.x1, c), y1: lerp(far.y1, near.y1, c), x2: lerp(far.x2, near.x2, c), y2: lerp(far.y2, near.y2, c) };
+    // pequeño "pulso" de enfoque
+    var pulse = Math.sin(p(t, 2.3, 2.8) * Math.PI) * 14;
+    var cs = [['ctl', b.x1 - pulse, b.y1 - pulse], ['ctr', b.x2 - 70 + pulse, b.y1 - pulse], ['cbl', b.x1 - pulse, b.y2 - 70 + pulse], ['cbr', b.x2 - 70 + pulse, b.y2 - 70 + pulse]];
+    cs.forEach(function (k) { var e = $(k[0]); e.style.left = k[1] + 'px'; e.style.top = k[2] + 'px'; e.style.opacity = 0.85 * cIn; });
+    var confirmed = t >= 2.6;
+    ['ctl','ctr','cbl','cbr'].forEach(function (id) { $(id).style.borderColor = confirmed && t < 3.1 ? '#F5C26B' : '#F4F1FF'; });
+
+    $('rtop').style.left = (b.x1 + 4) + 'px'; $('rtop').style.top = (b.y1 - 58) + 'px';
+    $('rtop').style.opacity = cIn;
+    $('rtopText').textContent = confirmed ? 'AF-S · ENFOQUE OK' : 'AF-S · ENFOCANDO';
+    $('rbot').style.left = (b.x1 + 4) + 'px'; $('rbot').style.top = (b.y2 + 26) + 'px';
+    $('rbot').style.opacity = cIn;
+
+    // 2.6–4.2 s: entran las letras
+    letters.forEach(function (el, i) {
+      var x = easeOut(p(t, 2.7 + i * 0.16, 3.4 + i * 0.16));
+      el.style.opacity = x;
+      el.style.transform = 'translateY(' + (1 - x) * 40 + 'px)';
+    });
+    // 4.0 s: destello
+    var s = p(t, 4.0, 4.6);
+    var sp = s > 0 ? backOut(s) : 0;
+    var g = $('sparkG');
+    g.style.transformOrigin = '324px -24px';
+    g.style.transform = 'scale(' + sp + ') rotate(' + (1 - s) * -90 + 'deg)';
+    g.style.opacity = s > 0 ? 1 : 0;
+    // destello de luz sobre la A
+    var f = p(t, 4.0, 4.9);
+    var fl = $('flash');
+    var sx = 140 + (324 + 12) / 424 * 800, sy = 735 + (-24 + 52) / 424 * 800;
+    fl.style.left = sx + 'px'; fl.style.top = sy + 'px';
+    fl.style.opacity = f > 0 ? Math.sin(f * Math.PI) * 0.9 : 0;
+    fl.style.transform = 'translate(-50%,-50%) scale(' + (0.3 + f * 1.4) + ')';
+
+    // 4.6 s: AGENCY
+    var a = easeOut(p(t, 4.6, 5.4));
+    $('agency').style.opacity = a;
+    $('agency').style.letterSpacing = lerp(1.2, 0.6, a) + 'em';
+    $('agency').style.textIndent = lerp(1.2, 0.6, a) + 'em';
+
+    // 5.4–6.6 s: MUY PRONTO
+    var m1 = easeOut(p(t, 5.5, 6.1)), m2 = easeOut(p(t, 5.75, 6.4));
+    $('s1').style.opacity = m1; $('s1').style.display = 'inline-block'; $('s1').style.transform = 'translateY(' + (1 - m1) * 50 + 'px)';
+    $('s2').style.opacity = m2; $('s2').style.display = 'inline-block'; $('s2').style.transform = 'translateY(' + (1 - m2) * 50 + 'px)';
+    var ln = easeInOut(p(t, 6.2, 6.9));
+    $('line').style.width = (ln * 160) + 'px';
+    var tg = easeOut(p(t, 6.6, 7.3));
+    $('tag').style.opacity = tg; $('tag').style.transform = 'translateY(' + (1 - tg) * 20 + 'px)';
+    var hd = easeOut(p(t, 7.1, 7.8));
+    $('handle').style.opacity = hd;
+  }
+  window.renderAt = renderAt;
+
+  // Escalado del escenario
+  function fit() {
+    var vp = $('viewport'), r = vp.getBoundingClientRect();
+    var k = Math.min(r.width / W, r.height / H);
+    if (!isFinite(k) || k <= 0) k = 0.2;
+    $('holder').style.width = (W * k) + 'px';
+    $('holder').style.height = (H * k) + 'px';
+    $('stage').style.transform = 'scale(' + k + ')';
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  if (location.hash === '#record') {
+    window.removeEventListener('resize', fit);
+    $('holder').style.width = W + 'px'; $('holder').style.height = H + 'px'; $('holder').style.borderRadius = '0';
+    $('stage').style.transform = 'none'; renderAt(0); return;
+  }
+
+  // Reproducción en bucle (con pausa de 1.5 s al final)
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var start = performance.now(), paused = false, pausedAt = 0;
+  function loop(now) {
+    if (!paused) {
+      var t = ((now - start) / 1000) % (DURATION + 1.5);
+      renderAt(Math.min(t, DURATION));
+    }
+    requestAnimationFrame(loop);
+  }
+  if (reduce) { renderAt(DURATION); } else { requestAnimationFrame(loop); }
+  // Primer cuadro visible ya completo para miniaturas
+  renderAt(reduce ? DURATION : 0);
+
+  $('replay').addEventListener('click', function () { start = performance.now(); paused = false; $('pause').textContent = 'Pausar'; });
+  $('pause').addEventListener('click', function () {
+    if (paused) { start += performance.now() - pausedAt; paused = false; this.textContent = 'Pausar'; }
+    else { pausedAt = performance.now(); paused = true; this.textContent = 'Continuar'; }
+  });
+})();
+</script>
