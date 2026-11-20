@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rossy Group | Construcción, Remodelación y Gestión de Proyectos</title>
+<meta name="description" content="Rossy Group ofrece construcción, remodelación, instalaciones y gestión de proyectos para clientes residenciales y comerciales en Puerto Rico. 787-400-6223.">
+<meta name="theme-color" content="#0f1724">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f1724; --navy-2:#182233; --slate:#4a5568; --muted:#6b7280; --line:#e5e7eb; --bg-alt:#f6f7f9;
+  --accent:#d0136f; --accent-dark:#a80e59; --white:#fff; --max:1200px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--navy);background:var(--white);line-height:1.65;-webkit-font-smoothing:antialiased;font-size:16px}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+h1,h2,h3,h4{font-family:Manrope,Inter,sans-serif;line-height:1.15;letter-spacing:-.02em;font-weight:800}
+h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin:.6rem 0 1rem}
+.kicker{display:inline-flex;align-items:center;gap:.6rem;font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.kicker::before{content:"";width:28px;height:2px;background:var(--accent)}
+.lead{color:var(--slate);font-size:1.05rem;max-width:640px}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.5rem;border-radius:4px;font-weight:600;font-size:.92rem;transition:.2s;border:1.5px solid transparent;cursor:pointer;font-family:inherit}
+.btn svg{width:18px;height:18px}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:var(--accent-dark)}
+.btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-ghost:hover{background:#fff;color:var(--navy)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-dark:hover{background:var(--navy-2)}
+
+/* Top bar */
+.topbar{background:var(--navy);color:rgba(255,255,255,.75);font-size:.8rem}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:40px;gap:20px}
+.topbar .l,.topbar .r{display:flex;gap:1.6rem;align-items:center}
+.topbar a{display:inline-flex;align-items:center;gap:.4rem}
+.topbar a:hover{color:#fff}
+.topbar svg{width:14px;height:14px}
+@media(max-width:700px){.topbar .l span:not(:first-child){display:none}}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{display:flex;align-items:center;gap:.7rem}
+.logo svg{width:40px;height:40px}
+.logo-text{font-family:Manrope,sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.06em;line-height:1}
+.logo-text small{display:block;font-size:.66rem;font-weight:600;letter-spacing:.34em;color:var(--muted);margin-top:4px}
+.menu{display:flex;gap:2.2rem;font-weight:500;font-size:.92rem;color:var(--slate)}
+.menu a:hover{color:var(--navy)}
+.burger{display:none;background:none;border:0;width:44px;height:44px;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:var(--navy);margin:5px auto}
+@media(max-width:960px){
+  .menu{position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;background:#fff;border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .3s}
+  .menu a{padding:1rem 24px;border-top:1px solid var(--line)}
+  .menu.open{max-height:400px}
+  .burger{display:block}
+  .nav .btn{display:none}
+}
+
+/* Hero */
+.hero{position:relative;color:#fff;background:var(--navy)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 70%}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,23,36,.94) 0%,rgba(15,23,36,.82) 45%,rgba(15,23,36,.35) 100%)}
+.hero .wrap{position:relative;padding-top:120px;padding-bottom:120px}
+.hero h1{font-size:clamp(2.3rem,5vw,3.8rem);max-width:760px;margin:1rem 0 1.3rem}
+.hero h1 span{color:#ff5aa8}
+.hero p{color:rgba(255,255,255,.8);font-size:1.12rem;max-width:580px;margin-bottom:2.2rem}
+.hero .kicker{color:#ff5aa8}.hero .kicker::before{background:#ff5aa8}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+@media(max-width:700px){.hero .wrap{padding-top:80px;padding-bottom:80px}}
+
+/* Pillars */
+.pillars{position:relative;margin-top:-56px;z-index:2}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;box-shadow:0 24px 50px -24px rgba(15,23,36,.35);border-radius:6px;overflow:hidden}
+.pillar{padding:1.8rem 1.6rem;border-right:1px solid var(--line)}
+.pillar:last-child{border-right:0}
+.pillar svg{width:30px;height:30px;color:var(--accent);margin-bottom:.9rem}
+.pillar h4{font-size:1rem;margin-bottom:.3rem}
+.pillar p{font-size:.86rem;color:var(--muted);line-height:1.5}
+@media(max-width:900px){.pillars-grid{grid-template-columns:1fr 1fr}.pillar{border-bottom:1px solid var(--line)}}
+@media(max-width:520px){.pillars-grid{grid-template-columns:1fr}.pillar{border-right:0}}
+
+section.block{padding:100px 0}
+.alt{background:var(--bg-alt)}
+.head-split{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:3rem}
+
+/* Sectors */
+.sectors{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sector{background:#fff;border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s}
+.sector:hover{box-shadow:0 20px 40px -24px rgba(15,23,36,.35);transform:translateY(-3px)}
+.sector .ph{aspect-ratio:16/10;overflow:hidden}
+.sector .ph img{width:100%;height:100%;object-fit:cover}
+.sector .bd{padding:1.6rem}
+.sector h3{font-size:1.2rem;margin-bottom:.5rem}
+.sector p{color:var(--muted);font-size:.92rem;margin-bottom:1rem}
+.sector ul{list-style:none;display:grid;gap:.35rem;font-size:.88rem;color:var(--slate)}
+.sector li{display:flex;gap:.5rem;align-items:center}
+.sector li::before{content:"";width:6px;height:6px;background:var(--accent);border-radius:1px;flex:none}
+@media(max-width:900px){.sectors{grid-template-columns:1fr}}
+
+/* Capabilities */
+.caps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.cap{padding:2rem 1.6rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.cap .n{font-family:Manrope;font-weight:800;font-size:.8rem;color:var(--accent);letter-spacing:.1em}
+.cap h3{font-size:1.08rem;margin:.6rem 0 .9rem}
+.cap ul{list-style:none;font-size:.9rem;color:var(--slate);display:grid;gap:.45rem}
+@media(max-width:900px){.caps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.caps{grid-template-columns:1fr}}
+
+/* Portfolio */
+.port{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.port figure{position:relative;overflow:hidden;border-radius:4px;background:#ccc}
+.port img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.port figure:hover img{transform:scale(1.04)}
+.port figcaption{position:absolute;inset:auto 0 0 0;padding:2.2rem 1.1rem 1rem;background:linear-gradient(transparent,rgba(15,23,36,.85));color:#fff;font-size:.88rem;font-weight:600}
+.port figcaption small{display:block;font-weight:500;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.p1{grid-column:span 4;height:420px}.p2{grid-column:span 4;height:420px}.p3{grid-column:span 4;height:420px}
+.p4{grid-column:span 6;height:300px}.p5{grid-column:span 6;height:300px}
+@media(max-width:900px){.port figure{grid-column:span 6!important;height:300px!important}}
+@media(max-width:560px){.port figure{grid-column:span 12!important}}
+
+/* Leadership */
+.lead-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.lead-photo{border-radius:6px;overflow:hidden;aspect-ratio:4/5;position:relative}
+.lead-photo img{width:100%;height:100%;object-fit:cover;object-position:top;filter:saturate(.85)}
+.quote{font-family:Manrope;font-size:1.35rem;font-weight:700;line-height:1.45;border-left:3px solid var(--accent);padding-left:1.4rem;margin:1.6rem 0}
+.sig b{display:block;font-family:Manrope}
+.sig span{color:var(--muted);font-size:.9rem}
+.commit{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--line)}
+.commit div{display:flex;gap:.7rem;font-size:.92rem;font-weight:500}
+.commit svg{width:20px;height:20px;color:var(--accent);flex:none;margin-top:2px}
+@media(max-width:900px){.lead-grid{grid-template-columns:1fr;gap:40px}.lead-photo{max-width:420px}}
+@media(max-width:520px){.commit{grid-template-columns:1fr}}
+
+/* Process */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:p}
+.proc div{padding:0 1.6rem 0 0;position:relative}
+.proc div::before{counter-increment:p;content:counter(p,decimal-leading-zero);display:block;font-family:Manrope;font-weight:800;color:var(--accent);font-size:.85rem;padding-bottom:1rem;margin-bottom:1.2rem;border-bottom:2px solid var(--line)}
+.proc h4{font-size:1.05rem;margin-bottom:.4rem}
+.proc p{color:var(--muted);font-size:.9rem}
+@media(max-width:900px){.proc{grid-template-columns:1fr 1fr;gap:2rem}}
+@media(max-width:520px){.proc{grid-template-columns:1fr}}
+
+/* CTA */
+.cta{background:var(--navy);color:#fff}
+.cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:30px;flex-wrap:wrap;padding-top:64px;padding-bottom:64px}
+.cta h2{margin:0 0 .4rem;font-size:clamp(1.6rem,3vw,2.2rem)}
+.cta p{color:rgba(255,255,255,.7)}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:60px}
+.cinfo{list-style:none;margin-top:2rem}
+.cinfo li{display:flex;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.cinfo svg{width:22px;height:22px;color:var(--accent);flex:none;margin-top:3px}
+.cinfo small{display:block;color:var(--muted);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em}
+.cinfo b{font-weight:600}
+form{border:1px solid var(--line);border-radius:6px;padding:2.2rem;background:#fff}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+label{display:block;font-size:.8rem;font-weight:600;margin-bottom:.4rem;color:var(--slate)}
+input,select,textarea{width:100%;padding:.8rem .9rem;border:1px solid #d1d5db;border-radius:4px;font:inherit;font-size:.95rem;background:#fff}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:transparent}
+textarea{min-height:120px;resize:vertical}
+.chk{display:flex;gap:1rem;flex-wrap:wrap;font-size:.9rem}
+.chk label{display:flex;gap:.4rem;align-items:center;font-weight:500;margin:0}
+.chk input{width:auto}
+form .btn{width:100%;justify-content:center;margin-top:.4rem}
+.note{font-size:.78rem;color:var(--muted);margin-top:.8rem;text-align:center}
+@media(max-width:900px){.contact{grid-template-columns:1fr}}
+@media(max-width:520px){.row{grid-template-columns:1fr}form{padding:1.4rem}}
+
+footer{background:#0a101a;color:rgba(255,255,255,.6);font-size:.88rem;padding:64px 0 28px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer h5{color:#fff;font-family:Manrope;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+footer ul{list-style:none;display:grid;gap:.5rem}
+footer a:hover{color:#fff}
+footer .logo-text{color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.8rem}
+@media(max-width:800px){.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.fgrid{grid-template-columns:1fr}}
+
+.wa-float{position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);z-index:60}
+.wa-float svg{width:28px;height:28px}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3 .78.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.25-.12-1.47-.72-1.7-.8s-.39-.13-.56.12-.64.8-.78.97-.29.19-.54.06a6.7 6.7 0 0 1-3.3-2.9c-.25-.43.25-.4.71-1.33a.45.45 0 0 0-.02-.42c-.06-.12-.56-1.35-.77-1.85s-.4-.42-.56-.43h-.48a.92.92 0 0 0-.66.31 2.8 2.8 0 0 0-.87 2.07 4.85 4.85 0 0 0 1 2.57 11.1 11.1 0 0 0 4.27 3.77c1.58.68 2.2.74 3 .62a2.55 2.55 0 0 0 1.68-1.18 2.1 2.1 0 0 0 .14-1.18c-.06-.1-.23-.17-.48-.3z"/></symbol>
+    <symbol id="i-crane" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4l-3 3M6 4h14M6 4l4 4M18 4v5M16 9h4v3h-4zM3 21h18M10 21v-6h5v6M12 15v6"/></g></symbol>
+    <symbol id="i-roller" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h2v5h-8v3M10 14h4v7h-4z"/></g></symbol>
+    <symbol id="i-house" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-6h4v6"/></g></symbol>
+    <symbol id="i-pool" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 15V5a2 2 0 0 1 4 0M16 15V5a2 2 0 0 0-4 0M8 8h8M8 12h8M2 17c2 0 2 1.5 4 1.5S8 17 10 17s2 1.5 4 1.5S16 17 18 17s2 1.5 4 1.5M2 21c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1"/></g></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="11" rx="1.5"/><path d="M6 5v11M10 5v11M14 5v11M18 5v11"/><circle cx="7" cy="19" r="1.8"/><circle cx="17" cy="19" r="1.8"/></g></symbol>
+    <symbol id="i-kitchen" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M3 14h18M12 10v10M7 17h2M15 17h2M7 3v4M5 7h4M16 4h3v3h-3z"/></g></symbol>
+    <symbol id="i-curtain" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18M5 3v18h3c0-6 2-10 3-12V3M19 3v18h-3c0-6-2-10-3-12V3"/></g></symbol>
+    <symbol id="i-hanger" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9V7.5a2 2 0 1 0-2-2M12 9 3 16a1 1 0 0 0 .6 1.8h16.8A1 1 0 0 0 21 16z"/></g></symbol>
+    <symbol id="i-roof" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12 12 4l10 8M5 10v10h14V10M12 20v-5M9 14c1.5-2 4.5-2 6 0"/><path d="M12 8.5c.8 1 1.2 1.6 1.2 2.1a1.2 1.2 0 0 1-2.4 0c0-.5.4-1.1 1.2-2.1z" fill="currentColor"/></g></symbol>
+    <symbol id="i-floor" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M3 9h18M3 15h18M9 3v6M15 9v6M9 15v6M15 3v6"/></g></symbol>
+    <symbol id="i-door" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M12 3v18M9.5 12h.01M14.5 12h.01"/></g></symbol>
+    <symbol id="i-ac" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="9" rx="2"/><path d="M6 10h12M7 17c0 1.5 1 2 1 3M12 16v4M17 17c0 1.5-1 2-1 3"/></g></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-9M12 12c0-4 3-7 8-7 0 5-3 8-8 8M12 15c0-3-2.5-5.5-7-5.5 0 4 2.5 6.5 7 6.5M4 21h16"/></g></symbol>
+    <symbol id="i-helmet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16h18M4.5 16a7.5 7.5 0 0 1 15 0M10 9V6h4v3M12 16v-4"/><path d="M5 19h14"/></g></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-woman" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10a7 7 0 0 1 14 0M3.5 10h17M10 5V3.5h4V5"/><path d="M8 12.5a4 4 0 0 0 8 0M5 21c.5-3 3.5-5 7-5s6.5 2 7 5"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></g></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3"/><circle cx="5" cy="10" r="2"/><circle cx="19" cy="10" r="2"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0M1.5 18a3.5 3.5 0 0 1 4-3.4M22.5 18a3.5 3.5 0 0 0-4-3.4"/></g></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M12 12v3l2 1.5"/></g></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-9.3-9.2C1.5 7.6 3.6 4.5 7 4.5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.4 0 5.5 3.1 4.3 6.3C19.5 15.4 12 20 12 20z"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></g></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor" stroke="none"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11.5a7 7 0 0 1 14 0C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-time" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="i-logo" viewBox="0 0 48 48"><path fill="#e0157f" d="M8 4h19c8.3 0 14 5 14 12.5 0 5.6-3.2 9.6-8.2 11.3L42 44H30.5l-8-14.8H18.8V44H8zm10.8 8.7v8.3h7.6c2.9 0 4.6-1.6 4.6-4.15 0-2.6-1.7-4.15-4.6-4.15z"/></symbol>
+  </defs>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="l">
+      <span><a href="tel:+17874006223"><svg><use href="#i-phone"/></svg>787-400-6223</a></span>
+      <span>Lunes a sábado</span>
+      <span>Servicio en Puerto Rico</span>
+    </div>
+    <div class="r">
+      <a href="https://www.instagram.com/rossy.group/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>@rossy.group</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="logo" aria-label="Rossy Group"><svg><use href="#i-logo"/></svg><span class="logo-text">ROSSY GROUP<small>CONSTRUCCIÓN</small></span></a>
+    <nav class="menu" id="menu">
+      <a href="#sectores">Sectores</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#empresa">Empresa</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="#contacto" class="btn btn-accent">Solicitar propuesta</a>
+    <button class="burger" id="burger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-bg"><img src="img/casa.jpg" alt=""></div>
+  <div class="wrap">
+    <span class="kicker">Construcción · Remodelación · Gestión de proyectos</span>
+    <h1>Soluciones integrales de construcción para proyectos <span>residenciales y comerciales</span>.</h1>
+    <p>Rossy Group coordina cada fase de su proyecto, desde el diseño y la obra hasta los acabados, con un solo punto de contacto, plazos definidos y estándares de calidad.</p>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn btn-accent">Solicitar propuesta</a>
+      <a href="#proyectos" class="btn btn-ghost">Ver proyectos</a>
+    </div>
+  </div>
+</section>
+
+<div class="pillars">
+  <div class="wrap">
+    <div class="pillars-grid reveal">
+      <div class="pillar"><svg><use href="#i-shield"/></svg><h4>Calidad garantizada</h4><p>Materiales de primera y supervisión en cada etapa.</p></div>
+      <div class="pillar"><svg><use href="#i-clock"/></svg><h4>Cumplimiento de plazos</h4><p>Calendarios claros y entregas en el tiempo acordado.</p></div>
+      <div class="pillar"><svg><use href="#i-helmet"/></svg><h4>Gestión integral</h4><p>Un solo equipo responsable de todo el proyecto.</p></div>
+      <div class="pillar"><svg><use href="#i-woman"/></svg><h4>Empresa liderada por mujer</h4><p>Atención personalizada, compromiso y confianza.</p></div>
+    </div>
+  </div>
+</div>
+
+<section class="block" id="sectores">
+  <div class="wrap">
+    <div class="head-split reveal">
+      <div><span class="kicker">Sectores</span><h2>A quién servimos</h2></div>
+      <p class="lead">Adaptamos alcance, presupuesto y calendario a las necesidades de cada cliente.</p>
+    </div>
+    <div class="sectors">
+      <article class="sector reveal">
+        <div class="ph"><img src="img/cortinas-sala.jpg" alt="Interior residencial terminado" loading="lazy"></div>
+        <div class="bd"><h3>Residencial</h3><p>Construcción de viviendas, ampliaciones y remodelaciones completas.</p>
+          <ul><li>Viviendas nuevas</li><li>Cocinas, baños y closets</li><li>Piscinas y áreas exteriores</li></ul></div>
+      </article>
+      <article class="sector reveal">
+        <div class="ph"><img src="img/screens-oficina.jpg" alt="Oficina comercial con screens instalados" loading="lazy"></div>
+        <div class="bd"><h3>Comercial</h3><p>Oficinas, locales y restaurantes listos para operar.</p>
+          <ul><li>Adecuación de locales</li><li>Pisos en epoxi</li><li>Aires, ductos y ventanería</li></ul></div>
+      </article>
+      <article class="sector reveal">
+        <div class="ph"><img src="img/cortinas-sheer-altas.jpg" alt="Proyecto en ejecución con andamio" loading="lazy"></div>
+        <div class="bd"><h3>Gestión de proyectos</h3><p>Coordinamos contratistas, permisos, presupuesto y calendario.</p>
+          <ul><li>Planificación y presupuesto</li><li>Supervisión de obra</li><li>Control de calidad y entrega</li></ul></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="servicios">
+  <div class="wrap">
+    <div class="head-split reveal">
+      <div><span class="kicker">Servicios</span><h2>Capacidades</h2></div>
+      <p class="lead">Un portafolio de servicios que cubre la obra de principio a fin.</p>
+    </div>
+    <div class="caps reveal">
+      <div class="cap"><span class="n">01</span><h3>Construcción y obra</h3><ul><li>Construcción</li><li>Remodelación</li><li>Sellado de techos</li><li>Venta de vagones</li></ul></div>
+      <div class="cap"><span class="n">02</span><h3>Interiores y acabados</h3><ul><li>Cocinas</li><li>Closets</li><li>Pintura en general</li><li>Pisos en epoxi</li><li>Cortinas y persianas</li></ul></div>
+      <div class="cap"><span class="n">03</span><h3>Sistemas e instalaciones</h3><ul><li>Aires y ductos</li><li>Puertas y ventanas</li></ul></div>
+      <div class="cap"><span class="n">04</span><h3>Exteriores y gestión</h3><ul><li>Piscinas</li><li>Landscaping</li><li>Project management</li><li>Proyectos a la medida</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="proyectos">
+  <div class="wrap">
+    <div class="head-split reveal">
+      <div><span class="kicker">Portafolio</span><h2>Proyectos seleccionados</h2></div>
+      <a href="https://www.instagram.com/rossy.group/" target="_blank" rel="noopener" class="btn btn-dark"><svg><use href="#i-ig"/></svg>Ver más en Instagram</a>
+    </div>
+    <div class="port reveal">
+      <figure class="p1"><img src="img/cortinas-sala.jpg" alt="Sala con cortinas sheer" loading="lazy"><figcaption><small>Residencial</small>Cortinas sheer en onda</figcaption></figure>
+      <figure class="p2"><img src="img/cortinas-sheer-altas.jpg" alt="Cortinas de doble altura" loading="lazy"><figcaption><small>Residencial</small>Cortinas de doble altura</figcaption></figure>
+      <figure class="p3"><img src="img/cortinas-zebra.jpg" alt="Persiana zebra en restaurante" loading="lazy"><figcaption><small>Comercial</small>Persiana zebra en restaurante</figcaption></figure>
+      <figure class="p4"><img src="img/screens-oficina.jpg" alt="Screens en oficina" loading="lazy" style="object-position:center 40%"><figcaption><small>Comercial</small>Screens enrollables en oficina</figcaption></figure>
+      <figure class="p5"><img src="img/casa.jpg" alt="Residencia moderna con piscina" loading="lazy" style="object-position:center 75%"><figcaption><small>Residencial</small>Construcción y piscina</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="empresa">
+  <div class="wrap lead-grid">
+    <div class="lead-photo reveal"><img src="img/natalie.jpg" alt="Natalie Rossy, fundadora de Rossy Group" loading="lazy"></div>
+    <div class="reveal">
+      <span class="kicker">La empresa</span>
+      <h2>Liderazgo, compromiso y resultados</h2>
+      <p class="lead">Rossy Group es una empresa de construcción liderada por una mujer, enfocada en ejecutar proyectos con transparencia, orden y atención al detalle.</p>
+      <p class="quote">“Construimos tus sueños, creamos realidades. Cada proyecto lo tratamos como si fuera nuestro.”</p>
+      <div class="sig"><b>Natalie Rossy</b><span>Fundadora y directora</span></div>
+      <div class="commit">
+        <div><svg><use href="#i-check"/></svg>Propuestas detalladas y sin costos ocultos</div>
+        <div><svg><use href="#i-check"/></svg>Un gerente de proyecto como único contacto</div>
+        <div><svg><use href="#i-check"/></svg>Comunicación constante del avance</div>
+        <div><svg><use href="#i-check"/></svg>Revisión final junto al cliente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head-split reveal"><div><span class="kicker">Metodología</span><h2>Cómo trabajamos</h2></div></div>
+    <div class="proc reveal">
+      <div><h4>Consulta inicial</h4><p>Entendemos el alcance, los objetivos y el presupuesto del proyecto.</p></div>
+      <div><h4>Evaluación y propuesta</h4><p>Visita técnica y propuesta formal con costos y calendario.</p></div>
+      <div><h4>Ejecución supervisada</h4><p>Gestión de equipo y materiales con reportes de avance.</p></div>
+      <div><h4>Entrega y cierre</h4><p>Inspección final, ajustes y entrega del proyecto.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <div><h2>¿Tiene un proyecto en mente?</h2><p>Hablemos de su alcance y le preparamos una propuesta sin compromiso.</p></div>
+    <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+      <a href="tel:+17874006223" class="btn btn-accent"><svg><use href="#i-phone"/></svg>787-400-6223</a>
+      <a href="#contacto" class="btn btn-ghost">Solicitar propuesta</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contacto">
+  <div class="wrap contact">
+    <div class="reveal">
+      <span class="kicker">Contacto</span>
+      <h2>Solicite una propuesta</h2>
+      <p class="lead">Complete el formulario y nuestro equipo se comunicará con usted.</p>
+      <ul class="cinfo">
+        <li><svg><use href="#i-phone"/></svg><div><small>Teléfono</small><b><a href="tel:+17874006223">787-400-6223</a></b></div></li>
+        <li><svg><use href="#i-wa"/></svg><div><small>WhatsApp</small><b><a href="https://wa.me/17874006223" target="_blank" rel="noopener">787-400-6223</a></b></div></li>
+        <li><svg><use href="#i-ig"/></svg><div><small>Instagram</small><b><a href="https://www.instagram.com/rossy.group/" target="_blank" rel="noopener">@rossy.group</a></b></div></li>
+        <li><svg><use href="#i-pin"/></svg><div><small>Cobertura</small><b>Puerto Rico</b></div></li>
+      </ul>
+    </div>
+    <form id="quote" class="reveal" novalidate>
+      <div class="row">
+        <div class="field"><label for="f-name">Nombre completo *</label><input id="f-name" name="name" required autocomplete="name"></div>
+        <div class="field"><label for="f-company">Empresa (opcional)</label><input id="f-company" name="company" autocomplete="organization"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="f-phone">Teléfono *</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel"></div>
+        <div class="field"><label for="f-town">Ubicación del proyecto</label><input id="f-town" name="town" placeholder="Pueblo"></div>
+      </div>
+      <div class="field"><label>Tipo de proyecto</label>
+        <div class="chk"><label><input type="radio" name="type" value="Residencial" checked>Residencial</label><label><input type="radio" name="type" value="Comercial">Comercial</label><label><input type="radio" name="type" value="Gestión de proyecto">Gestión de proyecto</label></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="f-service">Servicio principal</label>
+          <select id="f-service" name="service"><option>Construcción</option><option>Remodelación</option><option>Cocinas</option><option>Closets</option><option>Pintura en general</option><option>Pisos en epoxi</option><option>Cortinas y persianas</option><option>Aires y ductos</option><option>Puertas y ventanas</option><option>Sellado de techos</option><option>Piscinas</option><option>Landscaping</option><option>Venta de vagones</option><option>Project management</option><option>Otro</option></select></div>
+        <div class="field"><label for="f-when">¿Cuándo desea comenzar?</label>
+          <select id="f-when" name="when"><option>Lo antes posible</option><option>En 1–3 meses</option><option>En 3–6 meses</option><option>Solo estoy cotizando</option></select></div>
+      </div>
+      <div class="field"><label for="f-msg">Descripción del proyecto</label><textarea id="f-msg" name="msg"></textarea></div>
+      <button class="btn btn-accent" type="submit">Enviar solicitud</button>
+      <p class="note">Al enviar se abrirá WhatsApp con su solicitud lista para enviar.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div><a href="#inicio" class="logo"><svg><use href="#i-logo"/></svg><span class="logo-text">ROSSY GROUP<small>CONSTRUCCIÓN</small></span></a><p style="margin-top:1rem;max-width:300px">Construcción, remodelación y gestión de proyectos residenciales y comerciales en Puerto Rico.</p></div>
+      <div><h5>Empresa</h5><ul><li><a href="#empresa">Nosotros</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+      <div><h5>Servicios</h5><ul><li><a href="#servicios">Construcción</a></li><li><a href="#servicios">Remodelación</a></li><li><a href="#servicios">Project management</a></li></ul></div>
+      <div><h5>Contacto</h5><ul><li><a href="tel:+17874006223">787-400-6223</a></li><li><a href="https://www.instagram.com/rossy.group/" target="_blank" rel="noopener">@rossy.group</a></li><li>Puerto Rico</li></ul></div>
+    </div>
+    <div class="fbot"><span>© <span id="yr">2026</span> Rossy Group. Todos los derechos reservados.</span><span>Construimos tus sueños, creamos realidades.</span></div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/17874006223" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<script>
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.setAttribute('aria-expanded',o)});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1}):null;
+document.querySelectorAll('.reveal').forEach(el=>io?io.observe(el):el.classList.add('in'));
+document.getElementById('quote').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target.elements,n=f.name.value.trim(),p=f.phone.value.trim();
+  if(!n||!p){(n?f.phone:f.name).focus();return}
+  const t=`Solicitud de propuesta – Rossy Group\nNombre: ${n}`+(f.company.value?`\nEmpresa: ${f.company.value}`:'')+`\nTeléfono: ${p}`+(f.town.value?`\nUbicación: ${f.town.value}`:'')+`\nTipo: ${f.type.value}\nServicio: ${f.service.value}\nInicio: ${f.when.value}`+(f.msg.value?`\n\n${f.msg.value}`:'');
+  window.open('https://wa.me/17874006223?text='+encodeURIComponent(t),'_blank','noopener');
+});
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
